@@ -207,7 +207,7 @@ ln -s $(pwd)/bin/*.vst3 ~/Library/Audio/Plug-Ins/VST3/
 Note: Official macOS Cardinal builds install in the system-wide `/Library/Audio/Plug-Ins` location.  
 Watch out for conflicts if switching between the two builds.
 
-## Windows
+## Windows 11
 
 Symbolic links are not supported on Windows, so this approach doesn't work there.  
 On Windows you will have to copy or move the plugin bundles.  
