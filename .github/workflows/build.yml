@@ -411,14 +411,10 @@ jobs:
     steps:
       - name: Install git
         run: |
-          git config --global --add safe.directory /__w/Cardinal/Cardinal
           apt-get update -qq && apt-get install -yqq --no-install-recommends ca-certificates git openssl
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Checkout Befaco Sub-Submodules
-        run: |
-          git submodule update --init plugins/Befaco && cd plugins/Befaco && git submodule update --init --recursive
       - name: Set up cache
         id: cache
         uses: actions/cache@v4
@@ -436,6 +432,9 @@ jobs:
           key: ${{ matrix.target }}-v${{ env.CACHE_VERSION }}
       - name: Set up dependencies
         run: |
+          git config --global --add safe.directory `pwd`
+          git submodule update --init plugins/Befaco
+          cd plugins/Befaco && git submodule update --init --recursive && cd ../..
           ./deps/PawPaw/.github/workflows/bootstrap-deps.sh ${{ matrix.target }}
           apt-get install -yqq wget xvfb zip
           apt-get clean
