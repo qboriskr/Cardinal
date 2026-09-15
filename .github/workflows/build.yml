@@ -411,6 +411,7 @@ jobs:
     steps:
       - name: Install git
         run: |
+          git config --global --add safe.directory /__w/Cardinal/Cardinal
           apt-get update -qq && apt-get install -yqq --no-install-recommends ca-certificates git openssl
       - uses: actions/checkout@v4
         with:
