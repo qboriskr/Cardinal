@@ -403,7 +403,7 @@ jobs:
   windows:
     strategy:
       matrix:
-        target: [win32, win64]
+        target: [win64]
     runs-on: ubuntu-latest
     container:
       image: ubuntu:22.04
