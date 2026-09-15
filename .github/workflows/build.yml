@@ -3,6 +3,7 @@ name: build
 on: [push, pull_request]
 
 env:
+  GIT_SSL_NO_VERIFY: 1
   CACHE_VERSION: 15
   CARDINAL_UNDER_WINE: 1
   CIBUILD: true
