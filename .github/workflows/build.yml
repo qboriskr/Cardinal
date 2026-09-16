@@ -447,12 +447,6 @@ jobs:
         if: steps.cache.outputs.cache-hit == 'true'
         shell: bash
         run: |
-          git config --global --add safe.directory `pwd`
-          git submodule update --init plugins/Befaco
-          cd plugins/Befaco
-          git submodule update --init --recursive
-          find ./libs -name "*.h" -exec cp -f {} ./src/ \;
-          cd ../..
           export PATH="/usr/lib/ccache:${PATH}"
           source deps/PawPaw/local.env ${{ matrix.target }}
           make features

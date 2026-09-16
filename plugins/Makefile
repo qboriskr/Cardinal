@@ -554,10 +554,25 @@ MINIPLUGIN_FILES += BaconPlugs/src/Style.cpp
 PLUGIN_FILES += $(filter-out Befaco/src/plugin.cpp Befaco/src/MidiThing.cpp,$(wildcard Befaco/src/*.cpp))
 PLUGIN_FILES += $(wildcard Befaco/src/noise-plethora/*/*.cpp)
 
+PLUGIN_FILES += $(wildcard Befaco/src/random8_core/*.cpp)
+PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.cpp)
+PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/Libraries/KissFFT/*.c)
+PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.c)
+
+PLUGIN_FILES := $(filter-out Befaco/libs/OwlProgram/LibSource/ColourScreenPatch.cpp,$(PLUGIN_FILES))
+PLUGIN_FILES := $(filter-out Befaco/libs/OwlProgram/LibSource/MonochromeScreenPatch.cpp,$(PLUGIN_FILES))
+PLUGIN_FILES := $(filter-out Befaco/libs/OwlProgram/LibSource/PatchParameter.cpp,$(PLUGIN_FILES))
+
 # modules/types which are present in other plugins
 BEFACO_CUSTOM = ADSR Mixer chowdsp Burst RecordButton Mixer2 Slew
 
 BEFACO_FLAGS = $(filter-out -fsingle-precision-constant,$(filter-out -std=gnu++11,$(BUILD_CXX_FLAGS)))
+BEFACO_FLAGS += -DVCV
+BEFACO_FLAGS += -IBefaco/libs/OwlProgram/LibSource
+BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Source
+BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Libraries/KissFFT
+BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Libraries
+BEFACO_FLAGS += -IBefaco/libs/Iroi
 BEFACO_FLAGS += -std=gnu++17
 
 # --------------------------------------------------------------
