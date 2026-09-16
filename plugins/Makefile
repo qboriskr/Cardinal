@@ -552,12 +552,11 @@ MINIPLUGIN_FILES += BaconPlugs/src/Style.cpp
 # Befaco
 
 PLUGIN_FILES += $(filter-out Befaco/src/plugin.cpp Befaco/src/MidiThing.cpp,$(wildcard Befaco/src/*.cpp))
-PLUGIN_FILES += $(wildcard Befaco/src/noise-plethora/*/*.cpp)
-
-PLUGIN_FILES += $(wildcard Befaco/src/random8_core/*.cpp)
-PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.cpp)
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/Libraries/KissFFT/*.c)
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.c)
+PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.cpp)
+PLUGIN_FILES += $(wildcard Befaco/src/noise-plethora/*/*.cpp)
+PLUGIN_FILES += $(wildcard Befaco/src/random8_core/*.cpp)
 
 PLUGIN_FILES := $(filter-out Befaco/libs/OwlProgram/LibSource/ColourScreenPatch.cpp,$(PLUGIN_FILES))
 PLUGIN_FILES := $(filter-out Befaco/libs/OwlProgram/LibSource/MonochromeScreenPatch.cpp,$(PLUGIN_FILES))
