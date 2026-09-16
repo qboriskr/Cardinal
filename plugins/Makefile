@@ -551,10 +551,6 @@ MINIPLUGIN_FILES += BaconPlugs/src/Style.cpp
 # --------------------------------------------------------------
 # Befaco
 
-../build/plugins/Befaco/%.c.o: plugins/Befaco/%.c
-	@mkdir -p $(@D)
-	$(CC) $(BUILD_CFLAGS) $(BEFACO_FLAGS) -c -o $@ $<
-
 PLUGIN_FILES += $(filter-out Befaco/src/plugin.cpp Befaco/src/MidiThing.cpp,$(wildcard Befaco/src/*.cpp))
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/Libraries/KissFFT/*.c)
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.c)
@@ -2318,6 +2314,13 @@ $(BUILD_DIR)/Biset/src/%.cpp.o: Biset/src/%.cpp
 	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
 		$(foreach m,$(BISET_CUSTOM),$(call custom_module_names,$(m),Biset)) \
 		-DpluginInstance=pluginInstance__Biset
+
+$(BUILD_DIR)/Befaco/%.c.o: Befaco/%.c
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CC) $< $(BUILD_CFLAGS) $(BEFACO_FLAGS) -c -o $@ \
+		$(foreach m,$(BEFACO_CUSTOM),$(call custom_module_names,$(m),Befaco)) \
+		-DpluginInstance=pluginInstance__Befaco
 
 $(BUILD_DIR)/BogaudioModules%.cpp.o: BogaudioModules%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
