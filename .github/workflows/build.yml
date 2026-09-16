@@ -449,7 +449,7 @@ jobs:
         run: |
           git config --global --add safe.directory `pwd`
           git submodule update --init plugins/Befaco
-          cd plugins/Befaco && git submodule update --init --recursive && ls && ls libs/Iroi && cd ../..
+          cd plugins/Befaco && git submodule update --init --recursive && ls libs/Iroi && cp ./libs/Iroi/* ./src/ && cd ../..
           export PATH="/usr/lib/ccache:${PATH}"
           source deps/PawPaw/local.env ${{ matrix.target }}
           make features
