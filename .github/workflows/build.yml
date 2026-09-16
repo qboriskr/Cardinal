@@ -451,7 +451,7 @@ jobs:
           git submodule update --init plugins/Befaco
           cd plugins/Befaco
           git submodule update --init --recursive
-          find ./libs -name "*.h" -exec cp -f -t ./src {} +
+          find ./libs -name "*.h" -exec cp -f {} ./src/ \;
           cd ../..
           export PATH="/usr/lib/ccache:${PATH}"
           source deps/PawPaw/local.env ${{ matrix.target }}
