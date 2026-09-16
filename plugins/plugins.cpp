@@ -1699,6 +1699,8 @@ static void initStatic__Befaco()
         p->addModel(modelMuDi);
         p->addModel(modelSlew);
 	p->addModel(modelIroi);
+	p->addModel(modelRandom8);
+
 #undef modelADSR
 #undef modelMixer
 #undef modelBurst
