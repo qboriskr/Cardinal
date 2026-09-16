@@ -551,6 +551,10 @@ MINIPLUGIN_FILES += BaconPlugs/src/Style.cpp
 # --------------------------------------------------------------
 # Befaco
 
+../build/plugins/Befaco/%.c.o: plugins/Befaco/%.c
+	@mkdir -p $(@D)
+	$(CC) $(BUILD_CFLAGS) $(BEFACO_FLAGS) -c -o $@ $<
+
 PLUGIN_FILES += $(filter-out Befaco/src/plugin.cpp Befaco/src/MidiThing.cpp,$(wildcard Befaco/src/*.cpp))
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/Libraries/KissFFT/*.c)
 PLUGIN_FILES += $(wildcard Befaco/libs/OwlProgram/LibSource/*.c)
