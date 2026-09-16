@@ -450,6 +450,7 @@ jobs:
           export PATH="/usr/lib/ccache:${PATH}"
           source deps/PawPaw/local.env ${{ matrix.target }}
           find plugins/Befaco -type f \( -name "*.cpp" -o -name "*.hpp" -o -name "*.h" \) -exec sed -i -E 's/\bOscillator\b/BFOscillator/g' {} +
+          find plugins/Befaco -type f \( -name "*.cpp" -o -name "*.hpp" -o -name "*.h" \) -exec sed -i -E 's/#include "BFOscillator\.h"/#include "Oscillator.h"/g' {} +
           sed -i -E 's/\<Patch\>/PScPatch/g' plugins/AmalgamatedHarmonics/src/PolyScope.cpp
           make features
           xvfb-run make NOOPT=true -j $(nproc)
