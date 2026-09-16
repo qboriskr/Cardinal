@@ -414,6 +414,7 @@ jobs:
           apt-get update -qq && apt-get install -yqq --no-install-recommends ca-certificates git openssl
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 3
           submodules: recursive
       - name: Set up cache
         id: cache
