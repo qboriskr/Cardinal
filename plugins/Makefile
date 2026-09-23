@@ -572,7 +572,13 @@ BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Source
 BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Libraries/KissFFT
 BEFACO_FLAGS += -IBefaco/libs/OwlProgram/Libraries
 BEFACO_FLAGS += -IBefaco/libs/Iroi
+
 BEFACO_FLAGS += -std=gnu++17
+
+# Oneiroi ships its own (differing) Commons.h/Ui.h/Clock.h under libs/Oneiroi;
+# it must not see the Iroi versions from libs/Iroi (mirrors Befaco/Makefile).
+ONEROI_FLAGS = $(filter-out -IBefaco/libs/Iroi,$(BEFACO_FLAGS))
+ONEROI_FLAGS += -IBefaco/libs/Oneiroi
 
 # --------------------------------------------------------------
 # Bidoo
@@ -2319,6 +2325,13 @@ $(BUILD_DIR)/Befaco/%.c.o: Befaco/%.c
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
 	@echo "Compiling $<"
 	$(SILENT)$(CC) $< $(BUILD_CFLAGS) $(BEFACO_FLAGS) -c -o $@ \
+		$(foreach m,$(BEFACO_CUSTOM),$(call custom_module_names,$(m),Befaco)) \
+		-DpluginInstance=pluginInstance__Befaco
+
+$(BUILD_DIR)/Befaco/src/Oneiroi.cpp.o: Befaco/src/Oneiroi.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(ONEROI_FLAGS) -c -o $@ \
 		$(foreach m,$(BEFACO_CUSTOM),$(call custom_module_names,$(m),Befaco)) \
 		-DpluginInstance=pluginInstance__Befaco
 

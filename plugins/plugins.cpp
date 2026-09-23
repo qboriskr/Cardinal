@@ -166,6 +166,7 @@ extern Model *modelExcavi;
 #undef modelBurst
 #undef modelMixer2
 #undef modelSlew
+extern rack::Model* modelOneroi;
 
 // Bidoo
 #include "Bidoo/src/plugin.hpp"
@@ -1699,6 +1700,7 @@ static void initStatic__Befaco()
         p->addModel(modelMuDi);
         p->addModel(modelSlew);
 	p->addModel(modelIroi);
+	p->addModel(modelOneroi);
 	p->addModel(modelRandom8);
 
 #undef modelADSR
