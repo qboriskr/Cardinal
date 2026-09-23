@@ -263,3 +263,6 @@
 [submodule "plugins/Venom"]
 	path = plugins/Venom
 	url = https://github.com/DaveBenham/VenomModules
+[submodule "plugins/Befaco"]
+	path = plugins/Befaco
+	url = https://github.com/qboriskr/Befaco.git
