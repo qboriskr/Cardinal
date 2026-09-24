@@ -1,5 +1,7 @@
 # DISTRHO Cardinal
 
+This repos is a fork and was modded for personal purposes.
+
 *Cardinal, the Rack!*
 
 Cardinal is a free and open-source virtual modular synthesizer plugin,
