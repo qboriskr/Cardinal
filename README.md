@@ -1,6 +1,6 @@
 # DISTRHO Cardinal
 
-This repos is a fork and was modded for personal purposes.
+[This repos is a fork and was modded for personal purposes]
 
 *Cardinal, the Rack!*
 
